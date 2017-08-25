@@ -1,0 +1,27 @@
+<h1>Pages</h1>
+<table class="table">
+  <thead>
+    <tr class="table-info">
+      <th>ID</th>
+      <th>Title</th>
+      <th>Date added</th>
+      <th>Date edited</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of pages">
+    <td>{{ item?.$key }}</td>
+    <td>{{ item?.title }}</td>
+    <td></td>
+    <td></td>
+    <td>
+      <i class="glyphicon glyphicon-pencil" [routerLink]="item.$key"></i>
+      <i class="glyphicon glyphicon-trash" (click)="delete(item.$key)"></i>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<a class="btn btn-primary" routerLink="new">New Page</a>
+

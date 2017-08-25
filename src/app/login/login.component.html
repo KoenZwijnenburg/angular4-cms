@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="login-container">
+    <form class="form-signin" [formGroup]="loginForm">
+      <h2 class="form-signin-heading">Please sign in</h2>
+      <input type="email" id="inputEmail" class="form-control" formControlName="username" placeholder="Email address" required>
+      <input type="password" id="inputPassword" class="form-control" formControlName="password" placeholder="Password" required>
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+
+      <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
+    </form>
+
+    <a (click)="loginWithGoogle()">Login with Google</a>
+  </div>
+</div>
+

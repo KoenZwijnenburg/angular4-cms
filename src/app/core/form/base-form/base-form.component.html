@@ -1,0 +1,59 @@
+<div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+    <div *ngFor="let field of formFields" class="form-row">
+      <label>{{ field.label}}</label>
+
+      <textarea
+        *ngIf="field.controlType === 'textarea'"
+        [required]="field.required"
+        [formControlName]="field.key"
+        class="form-control"
+      ></textarea>
+
+      <input
+        *ngIf="field.controlType === 'input'"
+        class="form-control"
+        [type]="field.type"
+        [formControlName]="field.key"
+        [required]="field.required"
+      >
+
+      <select
+        *ngIf="field.controlType === 'select'"
+        [id]="field.key"
+        class="form-control"
+        [formControlName]="field.key">
+        <option *ngFor="let opt of field.options" [value]="opt.key">{{opt.value}}</option>
+      </select>
+
+      <div *ngIf="field.controlType === 'radio'">
+        <div *ngFor="let opt of field.options">
+          <input
+            type="radio"
+            [formControlName]="field.key"
+            [name]="field.key"> {{opt.value}}
+        </div>
+      </div>
+
+      <div *ngIf="field.controlType === 'checkbox'">
+        <div [formArrayName]="field.key">
+          <span *ngFor="let opt of field.options; let i = index" [formGroupName]="i">
+            <input
+              type="checkbox"
+              [formControlName]="opt.key"
+              [name]="field.key"> {{ opt.value }} <br>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <button type="submit">Save</button>
+    </div>
+  </form>
+
+  <div *ngIf="payLoad" class="form-row">
+    <strong>Saved the following values</strong><br>{{payLoad}}
+  </div>
+</div>

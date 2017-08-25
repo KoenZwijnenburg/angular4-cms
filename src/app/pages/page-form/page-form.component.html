@@ -1,0 +1,59 @@
+<form (ngSubmit)="submit()">
+  <div class="form-group row">
+    <div class="col-lg-4">
+      <label>Title</label>
+    <input type="text"
+           class="form-control"
+           [(ngModel)]="pageForm.title"
+           name="title"
+           minlength="4"
+           #title="ngModel">
+
+      <div class="alert-danger alert" *ngIf="title.invalid && title.dirty">
+        Title is required and needs minimum of 4 characters.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-lg-4">
+      <label>Slug</label>
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="pageForm.slug"
+             name="slug"
+             minlength="4"
+             #slug="ngModel">
+
+      <div class="alert-danger alert" *ngIf="slug.invalid && slug.dirty">
+        Slug is required and needs minimum of 4 characters.
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <div class="col-lg-8">
+      <label>Paragraphs</label>
+      <textarea
+        class="form-control"
+        type="text"
+        rows="8"
+        [(ngModel)]="pageForm.body"
+        name="body"
+        minlength="4"
+        #body="ngModel"></textarea>
+      <div class="alert-danger alert" *ngIf="body.invalid && body.dirty">
+        Body is required and needs minimum of 4 characters.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-lg-4">
+      <button class="btn btn-primary" (click)="submit()" [disabled]="false">{{ submitButton }}</button>
+      <button routerLink="/pages" class="btn btn">Cancel</button>
+    </div>
+  </div>
+
+</form>
