@@ -12,7 +12,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class SinglePageComponent implements OnInit, OnDestroy {
 
-  public page: FirebaseObjectObservable<Page>;
+  public page: Page;
   private pageId: string;
   public pageSubscription: Subscription;
 
@@ -36,9 +36,14 @@ export class SinglePageComponent implements OnInit, OnDestroy {
 
   editPage(data) {
     // @TODO You might want to use update if slug is not adjusted
+    const oldPage = this.page;
 
     if (data) {
       this.pageService.removePage(this.pageId).then((response) => {
+          let d = new Date();
+          data.dateEdited = d.toString();
+          data.dateCreated = oldPage.dateCreated.toString();
+
           this.pageService.newPage(data).then(onResolve => {
             if (onResolve) {
               this.router.navigate(['pages']);

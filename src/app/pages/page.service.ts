@@ -7,6 +7,8 @@ export interface Page {
   slug: string;
   title: string;
   body: string;
+  dateEdited?: string;
+  dateCreated?: string;
   img?: string;
   template?: string;
 }
@@ -26,7 +28,9 @@ export class PageService {
 
   getPages() {
     return this.db.list('pages').map(res => {
-      return res
+      res.dateCreated = new Date(res.dateCreated);
+      res.dateEdited = new Date(res.dateEdited);
+      return res;
     });
   }
 

@@ -13,8 +13,8 @@
   <tr *ngFor="let item of pages">
     <td>{{ item?.$key }}</td>
     <td>{{ item?.title }}</td>
-    <td></td>
-    <td></td>
+    <td>{{ item?.dateCreated | date:'dd-MM-y HH:mm' }}</td>
+    <td>{{ item?.dateEdited | date:'dd-MM-y HH:mm' }}</td>
     <td>
       <i class="fa fa-pencil" [routerLink]="item.$key"></i>
       <i class="fa fa-trash-o" (click)="delete(item.$key)"></i>

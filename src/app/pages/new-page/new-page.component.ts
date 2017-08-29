@@ -9,14 +9,18 @@ import { Router } from '@angular/router';
 })
 export class NewPageComponent implements OnInit {
 
-  constructor(public pageService: PageService, public router: Router) { }
+  constructor(public pageService: PageService, public router: Router) {
+  }
 
   ngOnInit() {
   }
 
   newPage(data) {
+    let d = new Date();
+    data.dateCreated = d.toString();
+
     this.pageService.newPage(data).then(itemAdded => {
-        if(itemAdded) {
+        if (itemAdded) {
           this.router.navigate(['pages']);
         }
       }
