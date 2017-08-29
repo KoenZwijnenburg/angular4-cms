@@ -20,7 +20,8 @@ export const PageForm = {
 @Injectable()
 export class PageService {
 
-  constructor(public db: AngularFireDatabase) {}
+  constructor(public db: AngularFireDatabase) {
+  }
 
 
   getPages() {
@@ -30,18 +31,18 @@ export class PageService {
   }
 
   getSinglePage(id) {
-    return this.db.object('pages/'+id).map(res => {
-      return res
+    return this.db.object('pages/' + id).map(res => {
+      return res;
     });
   }
 
-  editPage(id:string, updatedData){
-    let pageObservable = this.db.object('/pages/'+id);
+  editPage(id: string, updatedData) {
+    const pageObservable = this.db.object('/pages/' + id);
     return pageObservable.update(updatedData);
   }
 
   newPage(page) {
-    return this.db.object('/pages/'+page.slug).set(page).then(() => {
+    return this.db.object('/pages/' + page.slug).set(page).then(() => {
       return true;
     }).catch(error => {
       return error;
@@ -49,7 +50,12 @@ export class PageService {
   }
 
   removePage(id) {
-    let pageObservable = this.db.object('/pages/' + id);
-    pageObservable.remove();
+    const pageObservable = this.db.object('/pages/' + id);
+
+    return pageObservable.remove().then(() => {
+      return true;
+    }).catch(error => {
+      return error;
+    });
   }
 }

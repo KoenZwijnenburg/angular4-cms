@@ -15,7 +15,6 @@ export class NewPageComponent implements OnInit {
   }
 
   newPage(data) {
-    console.log(data);
     this.pageService.newPage(data).then(itemAdded => {
         if(itemAdded) {
           this.router.navigate(['pages']);

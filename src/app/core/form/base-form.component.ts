@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BaseFormFields, FormField } from '../base-form-fields';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BaseFormFields, FormField } from './base-form-fields';
 import { FormGroup } from '@angular/forms';
-import { CreateFormService } from '../create-form.service';
+import { CreateFormService } from './create-form.service';
 
 @Component({
   selector: 'cms-base-form',
@@ -11,16 +11,20 @@ import { CreateFormService } from '../create-form.service';
 export class BaseFormComponent implements OnInit {
 
   @Input() formFields: FormField[] = [];
+  @Output() submitForm: EventEmitter<any> = new EventEmitter();
   form: FormGroup;
   payLoad = '';
 
-  constructor(private createFormService: CreateFormService) {  }
+  constructor(private createFormService: CreateFormService) {
+  }
 
   ngOnInit() {
     this.form = this.createFormService.toFormGroup(this.formFields);
   }
 
   onSubmit() {
-    this.payLoad = JSON.stringify(this.form.value);
+    if (this.form.valid) {
+      this.submitForm.emit(this.form.value);
+    }
   }
 }

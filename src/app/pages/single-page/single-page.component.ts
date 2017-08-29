@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Page, PageService } from '../page.service';
 import { Subscription } from 'rxjs/Subscription';
-import { FirebaseObjectObservable } from "angularfire2/database";
+import { FirebaseObjectObservable } from 'angularfire2/database';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -16,7 +16,8 @@ export class SinglePageComponent implements OnInit, OnDestroy {
   private pageId: string;
   public pageSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private router: Router, public pageService: PageService) { }
+  constructor(private route: ActivatedRoute, private router: Router, public pageService: PageService) {
+  }
 
   ngOnInit() {
     this.pageSubscription = this.route.params.subscribe(res => {
@@ -34,19 +35,17 @@ export class SinglePageComponent implements OnInit, OnDestroy {
   }
 
   editPage(data) {
-    if(data) {
+    // @TODO You might want to use update if slug is not adjusted
 
-      if(data.slug) {
-        console.log(1);
-        // @TODO use set method to change slug.
-      } else {
-        this.pageService.editPage(this.pageId, data).then( changed => {
-            if(changed) {
+    if (data) {
+      this.pageService.removePage(this.pageId).then((response) => {
+          this.pageService.newPage(data).then(onResolve => {
+            if (onResolve) {
               this.router.navigate(['pages']);
             }
-          }
-        );
-      }
+          });
+        }
+      );
     }
   }
 

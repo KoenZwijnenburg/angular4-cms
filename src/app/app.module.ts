@@ -13,7 +13,6 @@ import { appRoutes } from '../routing';
 import { LoggedInComponent } from './template/logged-in/logged-in.component';
 import { LoginService } from './login/login.service';
 import { NewPageComponent } from './pages/new-page/new-page.component';
-import { EditPageComponent } from './pages/edit-page/edit-page.component';
 import { PageService } from './pages/page.service';
 import { SinglePageComponent } from './pages/single-page/single-page.component';
 import { AngularFireModule } from 'angularfire2';
@@ -21,7 +20,6 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { PageFormComponent } from './pages/page-form/page-form.component';
-import { TestFormComponent } from './pages/test-form/test-form.component';
 import { BaseFormModule } from './core/form/base-form.module';
 
 @NgModule({
@@ -34,9 +32,7 @@ import { BaseFormModule } from './core/form/base-form.module';
     PagesComponent,
     LoggedInComponent,
     NewPageComponent,
-    EditPageComponent,
     SinglePageComponent,
-    TestFormComponent,
     PageFormComponent
   ],
   imports: [
