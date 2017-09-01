@@ -1,10 +1,14 @@
 <header>
   <div class="header clearfix">
     <nav>
+      <div class="user float-right">
+        <i class="fa fa-sign-out" (click)="logout()"></i>
+      </div>
+
       <ul class="nav nav-pills float-right">
         <li class="nav-item"><a class="nav-link" routerLink="">Overview</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/pages">Pages</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/news">News</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['pages', 'static']">Pages</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['pages', 'news']">News</a></li>
       </ul>
     </nav>
     <h3 class="text-muted">CMS {{ customer}}</h3>

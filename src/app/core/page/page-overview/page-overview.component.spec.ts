@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SinglePageComponent } from './single-page.component';
+import { PageOverviewComponent } from './page-overview.component';
 
-describe('SinglePageComponent', () => {
-  let component: SinglePageComponent;
-  let fixture: ComponentFixture<SinglePageComponent>;
+describe('PageOverviewComponent', () => {
+  let component: PageOverviewComponent;
+  let fixture: ComponentFixture<PageOverviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SinglePageComponent ]
+      declarations: [ PageOverviewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SinglePageComponent);
+    fixture = TestBed.createComponent(PageOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

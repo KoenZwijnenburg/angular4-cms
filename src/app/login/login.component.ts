@@ -20,13 +20,12 @@ export class LoginComponent {
     password: new FormControl(),
   });
 
-  error:string;
+  error: string;
 
   constructor(public loginService: LoginService, private router: Router) {
     loginService.user.subscribe(user => {
       if(user) {
         localStorage.setItem('login', user.uid);
-        router.navigate(['']);
       }
     });
   }

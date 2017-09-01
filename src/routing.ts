@@ -1,33 +1,22 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './app/login/login.component';
+import { PageOverviewComponent } from './app/core/page/page-overview/page-overview.component';
+import { NewPageComponent } from './app/core/page/new-page/new-page.component';
+import { EditPageComponent } from './app/core/page/edit-page/edit-page.component';
 import { OverviewComponent } from './app/overview/overview.component';
-import { PagesComponent } from './app/pages/pages.component';
-import { NewsComponent } from './app/news/news.component';
-import { LoggedInComponent } from './app/template/logged-in/logged-in.component';
-import { NewPageComponent } from './app/pages/new-page/new-page.component';
-import { SinglePageComponent } from './app/pages/single-page/single-page.component';
+import { PageComponent } from './app/core/page/page.component';
 
 export const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: '',
-    component: LoggedInComponent,
+  { path: '', component: OverviewComponent },
+  {
+    path: 'pages/:type',
+    component: PageComponent,
     children: [
-      { path: '',      component: OverviewComponent },
-      {
-        path: 'pages',
-        children: [
-          { path: '',      component: PagesComponent },
-          { path: 'new',      component: NewPageComponent },
-          { path: ':id',      component: SinglePageComponent },
-        ]
-      },
-      { path: 'news', component: NewsComponent }
+      {path: '', component: PageOverviewComponent},
+      {path: 'new', component: NewPageComponent},
+      {path: 'edit/:id', component: EditPageComponent},
     ]
   },
-
 ];
 
 
-export const pageRoutes = [
-
-];

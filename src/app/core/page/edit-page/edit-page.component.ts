@@ -2,15 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Page, PageService } from '../page.service';
 import { Subscription } from 'rxjs/Subscription';
-import { FirebaseObjectObservable } from 'angularfire2/database';
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'cms-single-page',
-  templateUrl: './single-page.component.html',
-  styleUrls: ['./single-page.component.scss']
+  selector: 'cms-edit-page',
+  templateUrl: './edit-page.component.html',
+  styleUrls: ['./edit-page.component.scss']
 })
-export class SinglePageComponent implements OnInit, OnDestroy {
+export class EditPageComponent implements OnInit, OnDestroy {
 
   public page: Page;
   private pageId: string;
@@ -24,10 +22,10 @@ export class SinglePageComponent implements OnInit, OnDestroy {
 
       this.pageId = res.id;
 
-      this.pageService.getSinglePage(this.pageId).subscribe(res => {
-        this.page = res;
+      this.pageService.getSinglePage(this.pageId).subscribe(page => {
+        this.page = page;
       });
-    })
+    });
   }
 
   ngOnDestroy() {

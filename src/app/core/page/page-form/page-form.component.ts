@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
-import { SelectBox, TextArea, TextField } from '../../core/form/base-form-fields';
+import { SelectBox, TextArea, TextField } from '../../form/base-form-fields';
 
 @Component({
   selector: 'cms-page-form',

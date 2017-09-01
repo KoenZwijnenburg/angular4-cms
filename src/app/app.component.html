@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<div class="container" *ngIf="user?.uid">
+  <cms-navigation (signout)="signout()"></cms-navigation>
+  <router-outlet></router-outlet>
+</div>
+
+<ng-container *ngIf="!user?.uid">
+  <cms-login></cms-login>
+</ng-container>
