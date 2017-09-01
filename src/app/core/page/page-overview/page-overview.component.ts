@@ -17,7 +17,7 @@ export class PageOverviewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.pageSubscription = this.route.params.subscribe(params => {
+    this.pageSubscription = this.route.params.subscribe(() => {
         this.pageService.getPages().subscribe(res => {
           this.pages = res;
         });

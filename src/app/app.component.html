@@ -3,6 +3,11 @@
   <router-outlet></router-outlet>
 </div>
 
-<ng-container *ngIf="!user?.uid">
+<ng-container *ngIf="!user?.uid && !loading">
   <cms-login></cms-login>
 </ng-container>
+
+
+<div class="container" *ngIf="!user && loading">
+  <i class="fa fa-spinner fa-spin fa-3x"></i>
+</div>

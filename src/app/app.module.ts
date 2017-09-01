@@ -16,6 +16,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { BaseFormModule } from './core/form/base-form.module';
 import { PageModule } from './core/page/page.module';
 import { PageService } from './core/page/page.service';
+import { UserFormsModule } from './forms/user-forms.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PageService } from './core/page/page.service';
     AngularFireAuthModule,
     FormsModule,
     PageModule,
+    UserFormsModule,
   ],
   providers: [
     LoginService,

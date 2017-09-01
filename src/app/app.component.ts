@@ -8,6 +8,7 @@ import { LoginService } from './login/login.service';
 })
 export class AppComponent {
   user;
+  loading: boolean = false;
 
   constructor(public loginService: LoginService) {
     this.checkUserLoggedIn();
@@ -19,9 +20,13 @@ export class AppComponent {
   }
 
   checkUserLoggedIn() {
+    this.loading = true;
     this.loginService.user.subscribe(user => {
+      this.loading = false;
       if (user) {
         this.user = user;
+      } else {
+        this.user = false;
       }
     });
   }
