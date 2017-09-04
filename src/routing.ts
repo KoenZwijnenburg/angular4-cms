@@ -4,9 +4,9 @@ import { NewPageComponent } from './app/core/page/new-page/new-page.component';
 import { EditPageComponent } from './app/core/page/edit-page/edit-page.component';
 import { OverviewComponent } from './app/overview/overview.component';
 import { PageComponent } from './app/core/page/page.component';
-import { FormsOverviewComponent } from './app/forms/forms-overview/forms-overview.component';
-import { NewFormComponent } from './app/forms/new-form/new-form.component';
-import { EditFormComponent } from './app/forms/edit-form/edit-form.component';
+import { FormsOverviewComponent } from './app/user-forms/forms-overview/forms-overview.component';
+import { NewFormComponent } from './app/user-forms/new-form/new-form.component';
+import { EditFormComponent } from './app/user-forms/edit-form/edit-form.component';
 
 export const appRoutes: Routes = [
   { path: '', component: OverviewComponent },
@@ -20,7 +20,7 @@ export const appRoutes: Routes = [
     ]
   },
   {
-    path: 'forms/',
+    path: 'forms',
     children: [
       {path: '', component: FormsOverviewComponent},
       {path: 'new', component: NewFormComponent},

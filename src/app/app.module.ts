@@ -16,7 +16,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { BaseFormModule } from './core/form/base-form.module';
 import { PageModule } from './core/page/page.module';
 import { PageService } from './core/page/page.service';
-import { UserFormsModule } from './forms/user-forms.module';
+import { UserFormsModule } from './user-forms/user-forms.module';
+import { SharedModule } from './core/shared/shared.module';
+import './core/shared/rxjs-operators';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { UserFormsModule } from './forms/user-forms.module';
     FormsModule,
     PageModule,
     UserFormsModule,
+    SharedModule
   ],
   providers: [
     LoginService,

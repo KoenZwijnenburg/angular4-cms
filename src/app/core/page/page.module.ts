@@ -9,6 +9,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { PageFormComponent } from './page-form/page-form.component';
 import { PageComponent } from './page.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PageComponent } from './page.component';
     CommonModule,
     HttpModule,
     RouterModule,
+    SharedModule,
   ],
   exports: [
     NewPageComponent,
@@ -31,7 +33,7 @@ import { PageComponent } from './page.component';
     PageComponent
   ],
   providers: [
-    PageService
+    PageService,
   ]
 })
 export class PageModule {

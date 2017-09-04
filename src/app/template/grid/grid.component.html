@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+  <tr class="table-info">
+    <th *ngFor="let column of columns">{{ column.label }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of data">
+    <td *ngFor="let column of columns">
+      <span *ngIf="column.type === 'date'">
+        {{ item[column.key] | date:'dd-MM-y HH:mm' }}
+      </span>
+      <span *ngIf="column.type !== 'date'">
+        {{ item[column.key] }}
+      </span>
+    </td>
+  </tr>
+  </tbody>
+</table>

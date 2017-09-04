@@ -1,26 +1,3 @@
 <h1>Pages</h1>
-<table class="table">
-  <thead>
-  <tr class="table-info">
-    <th>ID</th>
-    <th>Title</th>
-    <th>Date added</th>
-    <th>Date edited</th>
-    <th>Options</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let item of pages">
-    <td>{{ item?.$key }}</td>
-    <td>{{ item?.title }}</td>
-    <td>{{ item?.dateCreated | date:'dd-MM-y HH:mm' }}</td>
-    <td>{{ item?.dateEdited | date:'dd-MM-y HH:mm' }}</td>
-    <td>
-      <i class="fa fa-pencil" [routerLink]="['edit/', item.$key]"></i>
-      <i class="fa fa-trash-o" (click)="delete(item.$key)"></i>
-    </td>
-  </tr>
-  </tbody>
-</table>
-
+<cms-grid [data]="pages" [columns]="columns"></cms-grid>
 <a class="btn btn-primary" routerLink="new">New Page</a>
