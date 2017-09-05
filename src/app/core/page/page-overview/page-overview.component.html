@@ -1,3 +1,6 @@
 <h1>Pages</h1>
-<cms-grid [data]="pages" [columns]="columns"></cms-grid>
+<cms-grid [data]="pages" [columns]="columns" (gridAction)="optionsAction($event)"></cms-grid>
 <a class="btn btn-primary" routerLink="new">New Page</a>
+
+<!--<i class="fa fa-pencil" [routerLink]="['edit/', item.$key]"></i>-->
+<!--<i class="fa fa-trash-o" (click)="delete(item.$key)"></i>-->

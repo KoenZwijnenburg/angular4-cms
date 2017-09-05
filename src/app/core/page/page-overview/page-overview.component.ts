@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Page, PageService } from '../page.service';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Column } from '../../../template/grid/grid.service';
+import { current } from 'codelyzer/util/syntaxKind';
 
 @Component({
   selector: 'cms-page-overview',
@@ -15,7 +16,8 @@ export class PageOverviewComponent implements OnInit, OnDestroy {
   columns: Column[];
   pageSubscription: Subscription;
 
-  constructor(public pageService: PageService, public route: ActivatedRoute) { }
+  constructor(public pageService: PageService, public route: ActivatedRoute, public router: Router) {
+  }
 
   ngOnInit() {
 
@@ -38,13 +40,28 @@ export class PageOverviewComponent implements OnInit, OnDestroy {
         label: 'Date edited',
         type: 'date'
       },
+      {
+        key: 'options',
+        label: 'Options',
+        type: 'options',
+        options: [
+          {
+            type: 'click',
+            action: 'delete'
+          },
+          {
+            type: 'link',
+            action: 'edit'
+          }
+        ]
+      }
     ];
 
     this.pageSubscription = this.route.params.subscribe(() => {
-        this.pageService.getPages().subscribe(res => {
-          this.pages = res;
-        });
+      this.pageService.getPages().subscribe(res => {
+        this.pages = res;
       });
+    });
   }
 
   ngOnDestroy() {
@@ -52,7 +69,15 @@ export class PageOverviewComponent implements OnInit, OnDestroy {
   }
 
 
-  delete(id) {
-    this.pageService.removePage(id);
+  optionsAction(event) {
+
+    if (event.action === 'edit') {
+      this.router.navigate(['edit', event.id], {relativeTo: this.route});
+    }
+
+    if (event.action === 'delete') {
+      this.pageService.removePage(event.id);
+    }
+
   }
 }

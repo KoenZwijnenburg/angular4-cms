@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'cms-grid',
@@ -10,9 +10,16 @@ export class GridComponent implements OnInit {
 
   @Input() data;
   @Input() columns;
+  @Output() gridAction: EventEmitter<Object> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {}
+
+
+  action(type, action, id) {
+    this.gridAction.emit({type: type, action: action, id: id});
+  }
+
 
 }
