@@ -29,12 +29,13 @@
       </select>
 
       <div *ngIf="field.controlType === 'radio'">
-        <div *ngFor="let opt of field.options">
+        <ng-container *ngFor="let opt of field.options">
           <input
             type="radio"
             [formControlName]="field.key"
+            [value]="opt.value"
             [name]="field.key"> {{opt.value}}
-        </div>
+        </ng-container>
       </div>
 
       <div *ngIf="field.controlType === 'checkbox'">

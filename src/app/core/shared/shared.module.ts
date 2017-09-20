@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GridComponent } from '../../template/grid/grid.component';
-import { GridService } from '../../template/grid/grid.service';
+import { GridComponent } from '../grid/grid.component';
+import { GridService } from '../grid/grid.service';
 
 @NgModule({
   imports: [

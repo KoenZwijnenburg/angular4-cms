@@ -17,7 +17,7 @@
 
       <ng-container *ngIf="column.type === 'options'">
           <span *ngFor="let option of column.options">
-                <i class="fa" [ngClass]="{ 'fa-trash-o': option.action === 'delete', 'fa-pencil': option.action === 'edit' }"  (click)="action(option.type, option.action, item.$key )"></i>
+                <i class="fa" [ngClass]="{ 'fa-trash-o': option.action === 'delete', 'fa-pencil': option.action === 'edit' }"  (click)="action(option.type, option.action, item[option.key])"></i>
           </span>
       </ng-container>
     </td>

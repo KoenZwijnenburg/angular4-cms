@@ -1,0 +1,16 @@
+<a class="btn btn-primary pull-right" (click)="saveFormFields()">Save Form</a>
+
+<div class="form-control">
+  <label>Form name</label>
+  <input [(ngModel)]="formName" type="text" required>
+</div>
+
+<h3>Form fields</h3>
+<cms-grid [columns]="columns" [data]="userFormFields" (gridAction)="formFieldAction($event)">></cms-grid>
+
+<i class="fa fa-plus" (click)="showFormFieldGenerator = !showFormFieldGenerator"></i>
+
+
+<div class="form-field-box" *ngIf="showFormFieldGenerator">
+  <cms-base-form [formFields]="formFields" (submitForm)="submit($event)"></cms-base-form>
+</div>

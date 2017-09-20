@@ -1,2 +1,3 @@
 <h1>Created forms</h1>
-<cms-grid [data]="data" [columns]="columns"></cms-grid>
+<cms-grid [data]="data" [columns]="columns" (gridAction)="edit($event)"></cms-grid>
+<a class="btn btn-primary" routerLink="new">New Form</a>

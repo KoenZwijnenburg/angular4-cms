@@ -7,6 +7,12 @@ export interface Column {
   options?: Array<any>;
 }
 
+export interface Option {
+  type: string;
+  action: string;
+  id: string;
+}
+
 @Injectable()
 export class GridService {
 

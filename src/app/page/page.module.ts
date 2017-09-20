@@ -4,12 +4,12 @@ import { PageOverviewComponent } from './page-overview/page-overview.component';
 import { NewPageComponent } from './new-page/new-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { PageService } from './page.service';
-import { BaseFormModule } from '../form/base-form.module';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { PageFormComponent } from './page-form/page-form.component';
 import { PageComponent } from './page.component';
-import { SharedModule } from '../shared/shared.module';
+import { BaseFormModule } from '../core/form/base-form.module';
+import { SharedModule } from '../core/shared/shared.module';
 
 @NgModule({
   declarations: [

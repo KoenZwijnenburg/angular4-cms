@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Column } from '../../template/grid/grid.service';
+import { Column, Option } from '../../core/grid/grid.service';
+import { UserFormGridService } from '../user-form.grid.service';
+import { UserFormService } from '../user-form.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'cms-forms-overview',
@@ -11,46 +14,23 @@ export class FormsOverviewComponent implements OnInit {
   columns: Column[];
   data;
 
-  constructor() {
+  constructor(
+    public userFormService: UserFormService,
+    public userFormGridService: UserFormGridService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
   }
 
   ngOnInit() {
-    this.columns = [
-      {
-        key: 'id',
-        label: 'ID'
-      },
-      {
-        key: 'name',
-        label: 'name'
-      },
-      {
-        key: 'created',
-        label: 'Created at'
-      }
-    ];
+    this.columns = this.userFormGridService.getOverviewColumsn();
 
-    this.data = [
-      {
-        id: '1',
-        name: 'form1',
-        created: 'yesterday'
-      },
-      {
-        id: '2',
-        name: 'form2',
-        created: 'yesterday'
-      },
-      {
-        id: '1',
-        name: 'form1',
-        created: 'yesterday'
-      },
-      {
-        id: '2',
-        name: 'form2',
-        created: 'yesterday'
-      }
-    ];
+    this.userFormService.getAllForms().subscribe(res => {
+      this.data = res;
+    });
+  }
+
+  edit(e: Option) {
+    this.router.navigate(['edit', e.id], {relativeTo: this.route});
   }
 }

@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Page, PageService } from '../page.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Column } from '../../../template/grid/grid.service';
 import { current } from 'codelyzer/util/syntaxKind';
+import { Column } from '../../core/grid/grid.service';
 
 @Component({
   selector: 'cms-page-overview',
@@ -47,11 +47,13 @@ export class PageOverviewComponent implements OnInit, OnDestroy {
         options: [
           {
             type: 'click',
-            action: 'delete'
+            action: 'delete',
+            key: 'key'
           },
           {
             type: 'link',
-            action: 'edit'
+            action: 'edit',
+            key: 'key'
           }
         ]
       }
