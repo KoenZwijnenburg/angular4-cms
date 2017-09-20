@@ -48,18 +48,18 @@ export class UserFormComponent implements OnInit, OnDestroy {
     this.showFormFieldGenerator = false;
   }
 
-  addFormField() {
-    console.log('add form field');
-  }
-
   formFieldAction(event) {
     if (event.action === 'edit') {
-
+      // @TODO edit form fields
     }
 
     if (event.action === 'delete') {
       this.userFormFields = this.userFormFields.filter(item => item.key !== event.id);
     }
+  }
+
+  deleteForm() {
+    // @TODO add delete form button and make forms deletable
   }
 
   saveFormFields() {
@@ -71,7 +71,13 @@ export class UserFormComponent implements OnInit, OnDestroy {
       created: new Date().toDateString()
     };
 
+
     if (form.slug && form.fields.length > 0) {
+
+      if (!this.newForm) {
+        // @TODO delete old form
+      }
+
       this.userFormService.save(form).then(res => {
         this.router.navigate(['forms']);
       });
